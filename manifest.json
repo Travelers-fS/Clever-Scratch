@@ -1,0 +1,13 @@
+{
+    "name": "Clever Scratch",
+    "version": "0.1",
+    "manifest_version": 2,
+    "description": "Scratchを賢く",
+    "permissions": ["declarativeContent", "storage"],
+    "content_scripts": [{
+        "matches": ["https://scratch.mit.edu/users/*"],
+        "js": [
+          "content.js"
+        ]
+    }]
+}
