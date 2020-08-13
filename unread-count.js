@@ -9,9 +9,9 @@ window.onload = function(){
     request.onload = function(){
         console.log(this.response);
         var messageCount = this.response["count"];
-        var child = document.createElement("p");
+        var child = document.createElement("span");
         child.innerText = "未読メッセージ数: " + String(messageCount);
-        child.style = "margin-bottom: 0px; display: inline-block; padding-left: 5px; margin-left: 5px; border-left: 1px solid #ccc;"
+        child.style = "margin-bottom: 0px; padding-left: 5px; margin-left: 5px; border-left: 1px solid #ccc;"
         var locationText = document.querySelector(".location");
         profileDetails.insertBefore(child, locationText);
     };
