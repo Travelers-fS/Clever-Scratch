@@ -7,7 +7,17 @@
     "content_scripts": [{
         "matches": ["https://scratch.mit.edu/users/*"],
         "js": [
-          "unread-count.js"
-        ]
-    }]
+            "src/js/unread-count.js"
+        ]},{
+        "matches": [
+            "https://scratch.mit.edu/projects/*",
+            "https://scratch.mit.edu/projects/*/*"
+        ],
+        "js": [
+            "src/js/comment-url.js"
+        ],
+        "css": [
+            "src/css/copylink.css"
+        ]}
+    ]
 }
