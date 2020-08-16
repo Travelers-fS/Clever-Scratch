@@ -7,7 +7,6 @@ window.onload = function(){
     var url = "https://api.scratch.mit.edu/users/" + username + "/messages/count";
     request.open("GET", url, true);
     request.onload = function(){
-        console.log(this.response);
         var messageCount = this.response["count"];
         var child = document.createElement("span");
         child.innerText = "未読メッセージ数: " + String(messageCount);
