@@ -5,7 +5,7 @@ window.onload = function(){
     var mo1 = new MutationObserver(function(_,mutationObserver){
         mutationObserver.disconnect();
         var mo2 = new MutationObserver(generateLink);
-        var target = document.querySelector(".comment-list");
+        var target = document.querySelector(".project-lower-container");
         mo2.observe(target, {"childList": true, "subtree": true});
     });
     mo1.observe(target, {"childList": true, "subtree": true});
@@ -13,9 +13,7 @@ window.onload = function(){
 
 function generateLink(){
     var comments = document.querySelectorAll(".comment");
-    console.log(comments);
     comments = Array.from(comments);
-    comments.shift();
     comments.forEach(element => {
         var actionButton = Array.from(element.getElementsByClassName("action-list"));
         if(actionButton[0].getElementsByClassName("comment-link-copy").length === 0){
