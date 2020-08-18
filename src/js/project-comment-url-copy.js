@@ -22,9 +22,9 @@ function generateLink(){
     };
     comments.forEach(element => {
         var actionButton = Array.from(element.getElementsByClassName("action-list"));
-        if(actionButton[0].getElementsByClassName("comment-link-copy").length === 0){
+        if(actionButton[0].getElementsByClassName("comment-url-copy").length === 0){
             var child = document.createElement("span");
-            child.className = "comment-link-copy";
+            child.className = "comment-url-copy";
             child.innerText = "🔗 リンクをコピー";
             child.onclick = function(){
                 var tmp = document.createElement("div");

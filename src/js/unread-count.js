@@ -1,7 +1,6 @@
-var request = new XMLHttpRequest();
-request.responseType = "json";
-
-window.onload = function(){
+function generateUnreadCount(){
+    var request = new XMLHttpRequest();
+    request.responseType = "json";
     var profileDetails = document.querySelector(".profile-details");
     var username = document.querySelector(".header-text h2").innerText;
     var url = "https://api.scratch.mit.edu/users/" + username + "/messages/count";
@@ -10,9 +9,10 @@ window.onload = function(){
         var messageCount = this.response["count"];
         var child = document.createElement("span");
         child.innerText = "未読メッセージ数: " + String(messageCount);
-        child.style = "margin-bottom: 0px; padding-left: 5px; margin-left: 5px; border-left: 1px solid #ccc;"
+        child.className = "unread-count"
         var locationText = document.querySelector(".location");
         profileDetails.insertBefore(child, locationText);
     };
     request.send();
 };
+generateUnreadCount()
