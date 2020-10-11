@@ -29,19 +29,20 @@ function generateProfileCommentLink(){
                     document.getSelection().selectAllChildren(tmp);
                     document.execCommand("copy");
                     document.body.removeChild(tmp);
-                    window.alert("URLをコピーしました!");
+                    this.innerText = "コピーしました";
                 };
                 actionButton.appendChild(child);
                 element.onmouseover = function(){
-                    var copyButton = this.querySelector(".comment-url-copy")
-                    copyButton.style.display = null
-                }
-                element.onmouseout = function(){
-                    var copyButton = this.querySelector(".comment-url-copy")
-                    copyButton.style.display = "none"
-                }
+                    var copyButton = this.querySelector(".comment-url-copy");
+                    copyButton.style.display = null;
+                };
+                element.onmouseleave = function(){
+                    var copyButton = this.querySelector(".comment-url-copy");
+                    copyButton.style.display = "none";
+                    copyButton.innerText = "リンクをコピー";
+                };
             };
         });
     };
-}
-generateProfileCommentLink()
+};
+generateProfileCommentLink();
