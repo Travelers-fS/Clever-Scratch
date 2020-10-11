@@ -2,15 +2,7 @@ url = location.href.split("#")[0].split("/").slice(0,5).join("/") + "#";
 
 window.onload = function(){
     var target = document.querySelector(".preview");
-    var mo1 = new MutationObserver(function(_,mutationObserver){
-        mutationObserver.disconnect();
-        var mo2 = new MutationObserver(generateLink);
-        var target = document.querySelector(".project-lower-container");
-        if (target === undefined){
-            target = document.querySelector(".comment-list");
-        };
-        mo2.observe(target, {"childList": true, "subtree": true});
-    });
+    var mo1 = new MutationObserver(generateLink);
     mo1.observe(target, {"childList": true, "subtree": true});
 };
 
@@ -21,11 +13,11 @@ function generateLink(){
         comments.shift();
     };
     comments.forEach(element => {
-        var actionButton = Array.from(element.getElementsByClassName("action-list"));
-        if(actionButton[0].getElementsByClassName("comment-url-copy").length === 0){
+        var actionButton = Array.from(element.getElementsByClassName("action-list"))[0];
+        if(actionButton.getElementsByClassName("comment-url-copy").length === 0){
             var child = document.createElement("span");
             child.className = "comment-url-copy";
-            child.innerText = "🔗 リンクをコピー";
+            child.innerText = "🔗リンクをコピー";
             child.onclick = function(){
                 var tmp = document.createElement("div");
                 var pre = document.createElement("pre");
@@ -38,11 +30,13 @@ function generateLink(){
                 document.getSelection().selectAllChildren(tmp);
                 document.execCommand("copy");
                 document.body.removeChild(tmp);
-                window.alert("URLをコピーしました!");
+                child.innerText = "コピーしました";
             };
-            actionButton.forEach(element => {
-                element.appendChild(child);
-            });
+            actionButton.appendChild(child);
+
+            element.onmouseleave = function(){
+                this.getElementsByClassName("comment-url-copy")[0].innerText = "🔗リンクをコピー";
+            };
         };
     });
 };
