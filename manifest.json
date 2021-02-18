@@ -3,7 +3,13 @@
     "version": "0.1",
     "manifest_version": 2,
     "description": "Scratchを賢く",
-    "permissions": ["declarativeContent", "storage"],
+    "permissions": [
+        "declarativeContent",
+        "storage",
+        "https://scratch.mit.edu/*",
+        "webRequest",
+        "webRequestBlocking"
+    ],
     "content_scripts": [{
         "matches": [
             "https://scratch.mit.edu/users/*",
@@ -11,7 +17,8 @@
         ],
         "js": [
             "src/js/comment-url-copy.js",
-            "src/js/unread-count.js"
+            "src/js/unread-count.js",
+            "src/js/rank-scratch.js"
         ]},{
         "matches": [
             "https://scratch.mit.edu/projects/*"
