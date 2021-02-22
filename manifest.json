@@ -4,8 +4,14 @@
     "manifest_version": 2,
     "description": "Scratchを賢く",
     "browser_action": {
+        "default_icon": "img/trafs.png",
         "default_popup": "pages/popup/index.html",
         "default_title": "Clever Scratch"
+      },
+      "icons": {
+        "16": "img/trafs.png",
+        "32": "img/trafs.png",
+        "1024": "img/trafs.png"
       },
     "permissions": [
         "declarativeContent",
@@ -21,9 +27,9 @@
         ],
         "js": [
             "src/js/comment-url-copy.js",
-            "src/js/unread-count.js",
-            "src/js/rank-scratch.js"
-        ]},{
+            "src/js/unread-count.js"
+        ]
+        },{
         "matches": [
             "https://scratch.mit.edu/projects/*"
         ],
